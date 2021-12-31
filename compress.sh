@@ -1,4 +1,4 @@
-acodec=$(ffprobe -v 0 -of csv=p=0 -select_streams a:0 -show_entries stream=codec_name "$in")
+acodec=$(ffprobe -v 0 -of csv=p=0 -select_streams a:0 -show_entries stream=codec_name "output.mkv")
 if [ "$acodec" == "vorbis" ] || [ "$acodec" == "opus" ]; then
 	audiostr="-acodec copy"
 else
