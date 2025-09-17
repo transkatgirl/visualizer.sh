@@ -20,7 +20,7 @@ if [ -z "$res" ]; then
 	#res="1920x1440"
 	#res="1440x1080"
 	#res="1280x960"
-	res="1280x823"
+	res="1280x822"
 fi
 hres=$(echo "$res" | awk -F "x" '{ print $1 }')
 vres=$(echo "$res" | awk -F "x" '{ print $2 }')
