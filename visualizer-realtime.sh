@@ -36,12 +36,12 @@ fi
 
 if [ -z "$gamma" ]; then
 	#gamma="3"
-	gamma="2.35"
+	#gamma="2.35"
+	gamma="2.718"
 fi
 
 if [ -z "$bgamma" ]; then
-	#bgamma="3"
-	bgamma="2.35"
+        bgamma="$gamma"
 fi
 
 if [ -z "$afchain" ]; then
