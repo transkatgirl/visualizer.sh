@@ -41,7 +41,7 @@ if [ -z "$gamma" ]; then
 fi
 
 if [ -z "$bgamma" ]; then
-        bgamma="$gamma"
+	bgamma="$gamma"
 fi
 
 if [ -z "$afchain" ]; then
