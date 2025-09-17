@@ -43,8 +43,8 @@ if [ -z "$bgamma" ]; then
 fi
 
 if [ -z "$afchain" ]; then
-	#afchain="loudnorm=dual_mono=true:offset=12"
-	afchain="acopy"
+	afchain="loudnorm=dual_mono=true:offset=12"
+	#afchain="acopy"
 fi
 
 if [ -z "$vfchain" ]; then
