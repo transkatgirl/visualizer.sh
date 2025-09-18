@@ -1,6 +1,7 @@
 #!/bin/bash
 file="$1"
 res="$2"
+fps="60"
 gamma="$3"
 sspeed="$4"
 tclamp="$5"
@@ -16,10 +17,8 @@ if [ -z "$file" ]; then
 fi
 
 if [ -z "$res" ]; then
-	#res="4096x3072"
-	#res="1920x1440"
-	#res="1440x1080"
-	#res="1280x960"
+	#res="1920x1280"
+	#res="1440x960"
 	res="1280x822"
 fi
 hres=$(echo "$res" | awk -F "x" '{ print $1 }')
@@ -56,6 +55,6 @@ fi
 
 sono_h=$(echo $hres $vres | awk '{ print int( ( (100 - (( $1 * 9 * 50 ) / ( 16 * $2 ))) * $2 ) / 200 ) * 2 }')
 vconfig="cscheme=0|1|1|1|0|1:fontcolor=0x101010:font='family=sans-serif\:weight=50\:minspace=true':sono_h=$sono_h"
-visualizer="$afchain,showcqt=s=$res:r=60:csp=bt709:$vconfig:count=$(echo $sspeed $sono_h | awk '{ print ($1 * $2)/90 }'):bar_v=16*a_weighting(f):sono_v=16*a_weighting(f):sono_g=$gamma:bar_g=$bgamma:tc=$(echo $sspeed $tclamp | awk '{ print (0.17 / $1) * $2 }'),$vfchain"
+visualizer="$afchain,showcqt=s=$res:r=$fps:csp=bt709:$vconfig:count=$(echo $sspeed $sono_h $fps | awk '{ print (($1 * $2)/90) * (60/$3) }'):bar_v=16*a_weighting(f):sono_v=16*a_weighting(f):sono_g=$gamma:bar_g=$bgamma:tc=$(echo $sspeed $tclamp | awk '{ print (0.17 / $1) * $2 }'),$vfchain"
 
 ffmpeg -f avfoundation -i "none:$file" -f wav - | ffplay -an -fflags nobuffer -f lavfi "amovie=f=pipe:filename=\'pipe:0\',$visualizer[out0]"
