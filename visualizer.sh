@@ -24,18 +24,21 @@ hres=$(echo "$res" | awk -F "x" '{ print $1 }')
 vres=$(echo "$res" | awk -F "x" '{ print $2 }')
 
 if [ -z "$sspeed" ]; then
+	#sspeed="1" # corresponds to ffmpeg default
 	sspeed="2"
 fi
 
 if [ -z "$tclamp" ]; then
-	tclamp="1"
+	tclamp="1" # corresponds to ffmpeg default
 fi
 
 if [ -z "$gamma" ]; then
+	#gamma="3" # ffmpeg default
 	gamma="2.71828182"
 fi
 
 if [ -z "$bgamma" ]; then
+	#bgamma="1" # ffmpeg default
 	bgamma="$gamma"
 fi
 
