@@ -45,9 +45,9 @@ if [ -z "$bgamma" ]; then
 fi
 
 if [ -z "$afchain" ]; then
-	#afchain="loudnorm=dual_mono=true:offset=9"
-	#afchain="acopy"
-	afchain="volume=1.5dB"
+	#afchain="loudnorm=dual_mono=true:offset=7.5"
+	afchain="acopy"
+	#afchain="volume=6dB"
 fi
 
 if [ -z "$vfchain" ]; then
